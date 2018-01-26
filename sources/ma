@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+export MA_FOLDER=${HOME}/code/src/github.com/MeilleursAgents
+export MA_REPOSITORY=${MA_FOLDER}/MeilleursAgents
+
+alias ma='cd ${MA_FOLDER}'
+
+if [ -e "${MA_FOLDER}/MA-Infra/tools/gssh/gssh.sh" ]; then
+  source "${MA_FOLDER}/MA-Infra/tools/gssh/gssh.sh"
+fi
+
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.vagrant_vault_pass.txt
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+
+  if [ `pyenv commands | grep virtualenvwrapper | wc -l` -ne 0 ]; then
+    pyenv virtualenvwrapper
+  fi
+fi
+
+alias selenium-chrome="open vnc://localhost:secret@localhost:5900"
+alias selenium-firefox="open vnc://localhost:secret@localhost:5901"

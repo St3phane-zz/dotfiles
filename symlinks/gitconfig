@@ -1,7 +1,7 @@
 [user]
 	name = Vincent Boutour
-	email = bob@vibioh.fr
-	signingkey = 49265F2EFEC291A90810F6416896D5F3CC06440D
+	email = vboutour@meilleursagents.com
+	signingkey = CC7E95FDB7585E47707821CC212EFCB38AA8163A
 
 [core]
 	editor = vi

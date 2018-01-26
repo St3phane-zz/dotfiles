@@ -108,7 +108,7 @@ if command -v go > /dev/null 2>&1; then
   echo
   echo Cleaning golang
   rm -rf ${GOPATH}/bin/* ${GOPATH}/pkg/* ${GOPATH}/src/golang.org
-  ls $GOPATH/src/github.com | grep -v ViBiOh | xargs rm -rf
+  ls $GOPATH/src/github.com | grep -v ViBiOh | grep -v MeilleursAgents | xargs rm -rf
 
   echo
   echo Updating golang packages
@@ -126,6 +126,6 @@ if command -v npm > /dev/null 2>&1; then
   echo
   echo Updating npm packages
 
-  npm install -g npm
+  npm install -g npm yarn
 fi
 
