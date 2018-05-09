@@ -1,0 +1,42 @@
+[user]
+    name = St3phane
+    email = point.steph@gmail.com
+
+[core]
+    editor = vim
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+    ignorecase = false
+
+[color]
+	ui = true
+
+[color "branch"]
+	upstream = cyan
+
+[diff]
+	mnemonicPrefix = true
+	renames = true
+
+[push]
+    default = current
+
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    branches = branch --list -r
+    tidy = rebase -i @{u}
+
+[log]
+	abbrevCommit = true
+
+[credential]
+	helper = cache --timeout=28800
+
+[fetch]
+	prune = true
+
+[pull]
+	rebase = preserve
+
+[merge]
+    tool = vimdiff
