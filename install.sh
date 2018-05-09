@@ -2,7 +2,7 @@
 
 set -e
 
-for file in ${HOME}/dofiles/symlinks/*; do
+for file in ${HOME}/dotfiles/symlinks/*; do
   [ -r "${file}" ] && [ -e "${file}" ] && rm -f ${HOME}/.`basename ${file}` && ln -s ${file} ${HOME}/.`basename ${file}`
 done
 

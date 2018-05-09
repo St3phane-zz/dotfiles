@@ -2,6 +2,6 @@
 
 [ -z "$PS1" ] && return
 
-for file in ${HOME}/dofiles/sources/*; do
+for file in ${HOME}/dotfiles/sources/*; do
   [ -r "${file}" ] && [ -f "${file}" ] && source "${file}"
 done
