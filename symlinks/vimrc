@@ -1,87 +1,78 @@
-" Turnoff vi backward compatibility
-set nocompatible
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Show status line
-set laststatus=2
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'sickill/vim-monokai'
+Plugin 'bronson/vim-visual-star-search'
+Plugin 'klen/python-mode'
+Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
 
-set statusline=
-set statusline+=%* " Highlight current window
-set statusline+=\%f " Filename
-set statusline+=\%m " Modified
-set statusline+=\%R " Read-Only indicator
-set statusline+=%=
-set statusline+=\%y " Type of file
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%% " Percentage of the file
-set statusline+=\ %l:%c " Line Number and Total Line
-set statusline+=\  " Empty space at end
+call vundle#end()
 
-" Line and column highlight
-set cursorline
-
-" Show line numbers
-set number
-
-" Default file encoding
+set relativenumber
+set cursorline      " highlight current line
+set laststatus=2    " always show the statusline
+set noswapfile      " no .swp files
 set encoding=utf-8
+setglobal fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
 
-" Show current command combination on bottom right
-set showcmd
+" excludes cache/vendor directories
+let g:ctrlp_custom_ignore = '\v[\/]src/cache|src/app/cache|vendors|node_modules|bower_components|__pycache__|\.pyc$'
+let g:ctrlp_working_path_mode = ''
 
-" Confirm change save
-set confirm
+" ipdb shortcut
+ab ipdb import ipdb; ipdb.set_trace()  # DEBUG
 
-" Wrap lines
-set wrap
+let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 
-" Spaces tab's width and indent size
-set tabstop=2 shiftwidth=2
+let mapleader = ","
+let g:mapleader = ","
+map th  :tabfirst<CR>
+map tj  :tabnext<CR>
+map tk  :tabprev<CR>
+map tl  :tablast<CR>
+map tt  :tabedit<Space>
+map tn  :tabnew<Space>
+map tm  :tabm<Space>
 
-" Show matching parenthesis
-set showmatch
+"nerdtree
+map <leader>n :NERDTreeToggle<CR>
+"ack
+map <leader>k :Ack!
 
-" Insert spaces instead of tabs
+set nocompatible
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
-" Backspace behavior for corresponding to most common apps
 set backspace=indent,eol,start
-
-" Hightlight search
-set hlsearch
-
-" Search as you type character
 set incsearch
+set hlsearch
+set autoindent
 
-" Ignore case in search
-set ignorecase
+syntax on
 
-" Search with smart case (if uppercase provided, search is case sensitive)
-set smartcase
+map <C-L> :noh<CR>:redraw!<CR>
 
-" Omni completion
-set completeopt=longest,menuone
-set omnifunc=syntaxcomplete#Complete
+" colorscheme
+syntax enable
+colorscheme monokai
 
-" Auto reload file
-set autoread
+" python-mode
+let g:pymode_rope = 0
+let g:pymode_options_max_line_length = 180
+let g:pymode_lint_options_pep8 = {'max_line_length': 180}
+let g:pymode_indent = 1
+let g:pymode_folding = 1
 
-" Disable folding
-set nofoldenable
+" vim-fugitive vertical diff
+set diffopt+=vertical
 
-" Disable backup files
-set nobackup
-set noswapfile
-
-" Enable syntax color if exist
-if exists(":syntax")
-  syntax on
-endif
-
-" Change map leader if possible
-if exists(":let")
-  let mapleader=","
-endif
-
-" Disabling viminfo
-set viminfo=""
+" Status line with lightline
+set laststatus=2
+set noshowmode
+let g:lightline={ 'colorscheme': 'solarized' }
